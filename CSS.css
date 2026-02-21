@@ -1,0 +1,79 @@
+.enterview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+p {
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.703);
+}
+
+img {
+    margin: 20px;
+    width: 450px;
+    height: 450px;
+    border-radius: 2%;
+}
+
+.music {
+    background-color: rgba(165, 42, 42, 0.533);
+    border-radius: 50px;
+    margin: 200px;
+}
+
+.music :hover {
+    background-color: brown;
+    color: black;
+    border-radius: 50px;
+}
+
+.audio-text {
+    font-size: 50px;
+}
+
+body {
+    background-color: rgb(224, 239, 251);
+}
+
+.shab2 {
+    margin: 60px;
+    padding: 20px;
+    background-color: rgb(190, 223, 249);
+    border-radius: 30px;
+}
+
+.partofpoetry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.F_poetry{ 
+    padding-bottom: 300px;
+
+}
+.S_poetry{
+    padding-top: 300px;
+}
+.py-4{
+    background-color: rgba(154, 203, 241, 0.532);
+    border-bottom-left-radius:100px ;
+    border-bottom-right-radius:100px ;
+}
