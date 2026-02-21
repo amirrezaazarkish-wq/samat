@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <a href="../Samat.html"><button>برگرد</button></a>
+    <meta charset="UTF-8" />
+    <title>پلی‌لیست من</title>
+    <style>
+        body {
+            font-family: system-ui;
+            background: #0f0c29;
+            background: linear-gradient(135deg, #302b63, #24243e);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        button {
+            padding: 10px 40px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        #player {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        #audio {
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        #playlist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        #playlist li {
+            padding: 15px;
+            margin: 8px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        #playlist li:hover,
+        #playlist li.playing {
+            background: rgba(108, 92, 231, 0.4);
+            transform: scale(1.02);
+        }
+        
+        #now-playing {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #a78bfa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>پلی‌لیست اهنگامون 🎵</h1>
+        <h3> دیدم اینا حرفامو قشنگتر بهت میگن 🎵</h3>
+        <h3>وگرنه من که چندین بار همینا رو گفتم</h3>
+        <div id="player">
+            <p id="now-playing">در حال پخش: هیچی انتخاب نشده</p>
+            <audio id="audio" controls></audio>
+        </div>
+        <ul id="playlist">
+            <!-- آهنگ‌ها اینجا میان -->
+        </ul>
+    </div>
+    <script>
+        const songs = [{
+                title: "نگو نه",
+                src: "music/1.mp3"
+            }, {
+                title: "عاشقی نگاییدم",
+                src: "music/2.mp3"
+            }, {
+                title: "خار",
+                src: "music/3.mp3"
+            }, {
+                title: "شب 2",
+                src: "music/4.mp3"
+            }, {
+                title: "دریا",
+                src: "music/5.mp3"
+            }, {
+                title: "دختر کوچولو",
+                src: "music/6.mp3"
+            }, {
+                title: "هیاهو",
+                src: "music/7.mp3"
+            }, {
+                title: "قلب بنفش",
+                src: "music/8.mp3"
+            },
+            // اینجا آهنگ‌های خودت رو اضافه کن
+            // مثلاً: { title: "نام آهنگ", src: "مسیر/فایل.mp3" },
+        ];
+        const audio = document.getElementById('audio');
+        const playlist = document.getElementById('playlist');
+        const nowPlaying = document.getElementById('now-playing');
+        let currentIndex = 0;
+        // ساخت لیست
+        songs.forEach((song, index) => {
+            const li = document.createElement('li');
+            li.textContent = song.title;
+            li.addEventListener('click', () => {
+                currentIndex = index;
+                playSong();
+            });
+            playlist.appendChild(li);
+        });
+
+        function playSong() {
+            audio.src = songs[currentIndex].src;
+            audio.play();
+            nowPlaying.textContent = `در حال پخش: ${songs[currentIndex].title}`;
+
+            // highlight آهنگ فعلی
+            document.querySelectorAll('#playlist li').forEach((li, i) => {
+                li.classList.toggle('playing', i === currentIndex);
+            });
+        }
+        // وقتی آهنگ تموم شد، بعدی رو پخش کن
+        audio.addEventListener('ended', () => {
+            currentIndex = (currentIndex + 1) % songs.length;
+            playSong();
+        });
+        // شروع با اولین آهنگ (اختیاری)
+        // playSong();
+    </script>
+</body>
+
+</html>
